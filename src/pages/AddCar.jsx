@@ -17,6 +17,10 @@ export const AddCar = () => {
     setNewCar(newCar);
   };
 
+  const resetForm = () => {
+    setNewCar("");
+  };
+
   
   return (
     <div>
@@ -131,7 +135,9 @@ export const AddCar = () => {
           Submit
         </button>
         <br />
-       
+        <button type="reset" value="Reset" onClick={() => resetForm()}>
+          Reset
+        </button>
       </form>
     </div>
   );
