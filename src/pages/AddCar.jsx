@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { carService } from "../services/CarService";
 
 export const AddCar = () => {
@@ -11,10 +12,26 @@ export const AddCar = () => {
     engine: "",
     numberOfDoors: "",
   });
-  const handleAdd = async (e) => {
+
+  const history = useHistory();
+  const { id } = useParams();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await carService.createCar(newCar);
-    setNewCar(newCar);
+    let data = null;
+
+    if (id) {
+      data = await carService.edit(id, newCar);
+    } else {
+      data = await carService.add(newCar);
+    }
+
+    if (!data) {
+      alert('The new car is not created');
+      return;
+    }
+
+    history.push('/cars');
   };
 
   const resetForm = () => {
@@ -39,7 +56,8 @@ export const AddCar = () => {
   
   return (
     <div>
-      <form onSubmit={handleAdd}>
+        <h2>{id ? 'Edit' : 'Add new'} </h2>
+      <form onSubmit={handleSubmit}>
         <label>
           brand:
           <input
@@ -146,9 +164,7 @@ export const AddCar = () => {
         />{" "}
         <br />
         <br />
-        <button type="submit" onClick={handleAdd}>
-          Submit
-        </button>
+        <button>{id ? 'Edit' : 'Add'}</button>
         <br />
         <button type="reset" value="Reset" onClick={() => resetForm()}>
           Reset

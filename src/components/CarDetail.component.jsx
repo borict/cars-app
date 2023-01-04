@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export const CarDetail = ({
   brand,
@@ -14,6 +15,10 @@ export const CarDetail = ({
       <p>
         {brand} {model} {year} {maxSpeed} {isAutomatic} {engine} {numberOfDoors}
       </p>
+      <button>
+        <Link to={`/edit/${id}`}>
+           Edit</Link>
+      </button>
     </div>
   );
 };
