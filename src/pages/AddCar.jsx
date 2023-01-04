@@ -46,7 +46,7 @@ export const AddCar = () => {
             type="text"
             required
             value={newCar.brand}
-            // minLength={2}
+            minLength={2}
             onChange={(e) => {
               setNewCar({ ...newCar, brand: e.target.value });
             }}
