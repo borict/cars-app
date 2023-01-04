@@ -27,11 +27,11 @@ export const AddCar = () => {
     }
 
     if (!data) {
-      alert('The new car is not created');
+      alert("The new car is not created");
       return;
     }
 
-    history.push('/cars');
+    history.push("/cars");
   };
 
   const resetForm = () => {
@@ -53,10 +53,10 @@ export const AddCar = () => {
         newCar.engine
     );
   };
-  
+
   return (
     <div>
-        <h2>{id ? 'Edit' : 'Add new'} </h2>
+      <h2>{id ? "Edit" : "Add new"} </h2>
       <form onSubmit={handleSubmit}>
         <label>
           brand:
@@ -125,7 +125,6 @@ export const AddCar = () => {
         <br />
         <label>engine: </label>
         <br />
-        
         <label>diesel</label>
         <input
           type="radio"
@@ -164,7 +163,7 @@ export const AddCar = () => {
         />{" "}
         <br />
         <br />
-        <button>{id ? 'Edit' : 'Add'}</button>
+        <button>{id ? "Edit" : "Add"}</button>
         <br />
         <button type="reset" value="Reset" onClick={() => resetForm()}>
           Reset
@@ -173,4 +172,4 @@ export const AddCar = () => {
       </form>
     </div>
   );
-}
+};

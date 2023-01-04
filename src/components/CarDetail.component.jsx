@@ -16,8 +16,7 @@ export const CarDetail = ({
         {brand} {model} {year} {maxSpeed} {isAutomatic} {engine} {numberOfDoors}
       </p>
       <button>
-        <Link to={`/edit/${id}`}>
-           Edit</Link>
+        <Link to={`/edit/${id}`}>Edit</Link>
       </button>
     </div>
   );
